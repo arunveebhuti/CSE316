@@ -1,9 +1,40 @@
 #include<stdio.h>
-int main(){
-
-
-printf("Hello World");
-
-
-return 0;
+#include<conio.h>
+void main(){
+	int n,i,tempa=0,tempb=0,s=0,t=0,bt=0;
+	int tq[840],tbt[840],tat[840];
+	int sq[840],sbt[840],sat[840];
+	chsr tc;
+	printf("__________________Query Management System_________________\n\n");
+printf("Enter Number of Queries : ");
+scanf("%d",&n);
+printf("Please enter the details -\n");
+	
+for(i=0;i<n;i++){
+	printf("Enter T/t if you are a teacher \n Enter S/s if you are a student :");
+	scanf("%c",&ts);
+	printf("Enter Burst Time :");
+	scanf("%d",&tempb);	
+	bt=bt+tempb;
+	printf("Enter Arival Time :");
+	scanf("%d",&tempa);	
+	if(ts=='t'||ts=='T'&&bt<=840)
+	{
+		tbt[t]=tempb;
+		tat[t]=tempa;
+		t=t+1;
+		}
+		else if(ts=='s'||ts=='S'&&bt<=840)
+	{
+		sbt[s]=tempb;
+		sat[s]=tempa;
+		s=s+1;
+		}	
+		
+		
+	
+	
+	
+	
+}
 }
