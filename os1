@@ -2,7 +2,7 @@
 #include<conio.h>
 
 void main(){
-	int n,i,tempa=0,tempb=0,s=0,t=0,bt=0;
+	int n,i,tempa=0,tempb=0,s=0,t=0,bt=0,a,b,j;
 	int tq[840],tbt[840],tat[840];
 	int sq[840],sbt[840],sat[840];
 	char ts;
@@ -12,7 +12,7 @@ scanf("%d",&n);
 printf("Please enter the details -\n");
 	
 for(i=0;i<n;i++){
-	printf("Enter T/t if you are a teacher\n Enter S/s if you are a student :");
+	printf("Enter T/t if you are a teacher or Enter S/s if you are a student :");
 	scanf(" %c", &ts);
 	printf("Enter Burst Time :");
 	scanf("%d",&tempb);	
@@ -30,15 +30,51 @@ for(i=0;i<n;i++){
 		sbt[s]=tempb;
 		sat[s]=tempa;
 		s=s+1;
-		}	
-		
-	
-	
-	
-}
+	}}
 
-
-
+        for (i = 0; i < s; ++i) 
+        {
+ 
+            for (j = i + 1; j < s; ++j)
+            {
+ 
+                if (sat[i] > sat[j]) 
+                {
+ 
+                    a =  sat[i];
+                    sat[i] = sat[j];
+                    sat[j] = a;
+                    b =  sbt[i];
+                    sbt[i] = sbt[j];
+                    sbt[j] = b;
+ 
+                }
+ 
+            }
+ 
+        }
+        for (i = 0; i < t; ++i) 
+        {
+ 
+            for (j = i + 1; j < t; ++j)
+            {
+ 
+                if (tat[i] > tat[j]) 
+                {
+ 
+                    a =  tat[i];
+                    tat[i] = tat[j];
+                    sat[j] = a;
+                    b =  tbt[i];
+                    tbt[i] = tbt[j];
+                    tbt[j] = b;
+ 
+                }
+ 
+            }
+ 
+        }
+ 
 
 
 }
