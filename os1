@@ -1,18 +1,19 @@
 #include<stdio.h>
 #include<conio.h>
+
 void main(){
 	int n,i,tempa=0,tempb=0,s=0,t=0,bt=0;
 	int tq[840],tbt[840],tat[840];
 	int sq[840],sbt[840],sat[840];
-	chsr tc;
+	char ts;
 	printf("__________________Query Management System_________________\n\n");
 printf("Enter Number of Queries : ");
 scanf("%d",&n);
 printf("Please enter the details -\n");
 	
 for(i=0;i<n;i++){
-	printf("Enter T/t if you are a teacher \n Enter S/s if you are a student :");
-	scanf("%c",&ts);
+	printf("Enter T/t if you are a teacher\n Enter S/s if you are a student :");
+	scanf(" %c", &ts);
 	printf("Enter Burst Time :");
 	scanf("%d",&tempb);	
 	bt=bt+tempb;
@@ -31,10 +32,13 @@ for(i=0;i<n;i++){
 		s=s+1;
 		}	
 		
-		
-	
 	
 	
 	
 }
+
+
+
+
+
 }
