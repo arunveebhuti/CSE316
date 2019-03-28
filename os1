@@ -16,6 +16,7 @@ for(i=0;i<n;i++){
 	scanf(" %c", &ts);
 	printf("Enter Burst Time :");
 	scanf("%d",&tempb);	
+//	printf("%d",&tempb);
 	bt=bt+tempb;
 	printf("Enter Arival Time :");
 	scanf("%d",&tempa);	
@@ -24,14 +25,21 @@ for(i=0;i<n;i++){
 		tbt[t]=tempb;
 		tat[t]=tempa;
 		t=t+1;
+		
 		}
 		else if(ts=='s'||ts=='S'&&bt<=840)
 	{
 		sbt[s]=tempb;
 		sat[s]=tempa;
 		s=s+1;
-	}}
+	}
+	}
+	
+	
+	
 
+ 
+	
         for (i = 0; i < s; ++i) 
         {
  
@@ -64,7 +72,7 @@ for(i=0;i<n;i++){
  
                     a =  tat[i];
                     tat[i] = tat[j];
-                    sat[j] = a;
+                    tat[j] = a;
                     b =  tbt[i];
                     tbt[i] = tbt[j];
                     tbt[j] = b;
@@ -74,6 +82,13 @@ for(i=0;i<n;i++){
             }
  
         }
+       for(i=0;i<t;i++){
+       	printf("\n%d,%d\n",tat[i],tbt[i]);
+		}		
+		        for(i=0;i<s;i++){
+      	printf("\n--%d,%d\n",sat[i],sbt[i]);
+	}
+ 
  
 
 
