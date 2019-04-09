@@ -2,7 +2,7 @@
 #include<conio.h>
 
 void main(){
-	int n,i,tempa=0,tempb=0,s=0,t=0,bt=0,a,b,j;
+	int n,i,tempa=0,tempb=0,s=0,t=0,bt=0,a,b,j,g,zc=0,tmq=0,time=0;
 	int tq[840],tbt[840],tat[840];
 	int sq[840],sbt[840],sat[840];
 	char ts;
@@ -25,6 +25,7 @@ for(i=0;i<n;i++){
 		tbt[t]=tempb;
 		tat[t]=tempa;
 		t=t+1;
+		tq[t]=t+1;
 		
 		}
 		else if(ts=='s'||ts=='S'&&bt<=840)
@@ -32,8 +33,12 @@ for(i=0;i<n;i++){
 		sbt[s]=tempb;
 		sat[s]=tempa;
 		s=s+1;
+		sq[s]=s+1;
+		
 	}
 	}
+	printf("Enter Time Quantum :");
+	scanf("%d",&tmq);	
 	
 	
 	
@@ -55,6 +60,9 @@ for(i=0;i<n;i++){
                     b =  sbt[i];
                     sbt[i] = sbt[j];
                     sbt[j] = b;
+                    a =  sq[i];
+                    sq[i] = sq[j];
+                    sq[j] = a;
  
                 }
  
@@ -76,6 +84,9 @@ for(i=0;i<n;i++){
                     b =  tbt[i];
                     tbt[i] = tbt[j];
                     tbt[j] = b;
+                    b =  tq[i];
+                    tq[i] = tq[j];
+                    tq[j] = b;
  
                 }
  
@@ -88,7 +99,65 @@ for(i=0;i<n;i++){
 		        for(i=0;i<s;i++){
       	printf("\n--%d,%d\n",sat[i],sbt[i]);
 	}
- 
+	if(t>s){
+		g=t;
+		
+	}
+	else if(s>t){
+		g=s;
+	}
+	else{
+		g=t;
+	}
+	i=0;
+	j=0;
+ while(zc!=t+s){
+ 	while(i!=s||j!=t){
+ 		if(tat[i]<=time){
+ 			time=time+1;
+		 if(i>t){
+		 }
+		 else if(tbt[i]==0){
+		 	zc=zc+1;
+		 }
+		 else{
+		 	if(tbt[i]==tmq||tbt[i]<tmq){
+		 		tbt[i]=0;
+		 		time=time+tbt[i];
+		 		
+			 }
+			 else{
+			 	tbt[i]=tbt[i]-tmq;
+			 }
+			 
+	}
+	i=i+1;
+		 	
+		 }
+		  		if(sat[i]<=time){
+		  			time=time+1;
+		 if(j>s){
+		 }
+		 else if(sbt[j]==0){
+		 	zc=zc+1;
+		 }
+		 else{
+		 	if(sbt[j]==tmq||sbt[j]<tmq){
+		 		sbt[i]=0;
+		 		time=time+sbt[i];
+		 		
+			 }
+			 else{
+			 	sbt[j]=sbt[j]-tmq;
+			 }
+			 
+	}
+	j=j+1;
+		 	
+		 }
+	 }
+ 	
+ }
  
 
 
