@@ -1,23 +1,21 @@
 #include<stdio.h>
 #include<conio.h>
-
-void main(){
-	int n,i,tempa=0,tempb=0,s=0,t=0,bt=0,a,b,j,g,zc=0,tmq=0,time=0;
+ main(){
 	int tq[840],tbt[840],tat[840];
 	int sq[840],sbt[840],sat[840];
-	char ts;
-	printf("__________________Query Management System_________________\n\n");
+	int n,i,tempa=0,tempb=0,s=0,t=0,bt=0,a,b,j,g,zc=0,tmq=0,time=0;
+	char ts;//teacher or student for ip
+		printf("__________________Query Management System_________________\n\n");
 printf("Enter Number of Queries : ");
 scanf("%d",&n);
 printf("Please enter the details -\n");
-	
 for(i=0;i<n;i++){
 	printf("Enter T/t if you are a teacher or Enter S/s if you are a student :");
 	scanf(" %c", &ts);
 	printf("Enter Burst Time :");
 	scanf("%d",&tempb);	
 //	printf("%d",&tempb);
-	bt=bt+tempb;
+	bt=bt+tempb;  //bt-burst time for 14hrs 
 	printf("Enter Arival Time :");
 	scanf("%d",&tempa);	
 	if(ts=='t'||ts=='T'&&bt<=840)
@@ -28,7 +26,7 @@ for(i=0;i<n;i++){
 		tq[t]=t+1;
 		
 		}
-		else if(ts=='s'||ts=='S'&&bt<=840)
+		else if(ts=='s'||ts=='S'&&bt<=840) 
 	{
 		sbt[s]=tempb;
 		sat[s]=tempa;
@@ -37,15 +35,10 @@ for(i=0;i<n;i++){
 		
 	}
 	}
-	printf("Enter Time Quantum :");
-	scanf("%d",&tmq);	
+		printf("Enter Time Quantum :");
+	scanf("%d",&tmq);	//time quantum
 	
-	
-	
-
- 
-	
-        for (i = 0; i < s; ++i) 
+	        for (i = 0; i < s; ++i) // sorting student ques
         {
  
             for (j = i + 1; j < s; ++j)
@@ -54,7 +47,7 @@ for(i=0;i<n;i++){
                 if (sat[i] > sat[j]) 
                 {
  
-                    a =  sat[i];
+                    a =  sat[i];   //a and b are temp variables 
                     sat[i] = sat[j];
                     sat[j] = a;
                     b =  sbt[i];
@@ -69,7 +62,7 @@ for(i=0;i<n;i++){
             }
  
         }
-        for (i = 0; i < t; ++i) 
+        for (i = 0; i < t; ++i) // sorting teachers ques
         {
  
             for (j = i + 1; j < t; ++j)
@@ -80,7 +73,7 @@ for(i=0;i<n;i++){
  
                     a =  tat[i];
                     tat[i] = tat[j];
-                    tat[j] = a;
+                    tat[j] = a;  //a and b are temp variables 
                     b =  tbt[i];
                     tbt[i] = tbt[j];
                     tbt[j] = b;
@@ -93,32 +86,16 @@ for(i=0;i<n;i++){
             }
  
         }
-       for(i=0;i<t;i++){
-       	printf("\n%d,%d\n",tat[i],tbt[i]);
-		}		
-		        for(i=0;i<s;i++){
-      	printf("\n--%d,%d\n",sat[i],sbt[i]);
-	}
-	if(t>s){
-		g=t;
-		
-	}
-	else if(s>t){
-		g=s;
-	}
-	else{
-		g=t;
-	}
-	i=0;
+        	i=0;
 	j=0;
- while(zc!=t+s){
+ while(zc!=t+s){ //loop runs t+s times 
  	while(i!=s||j!=t){
  		if(tat[i]<=time){
- 			time=time+1;
+ 		//	time=time+1;
 		 if(i>t){
 		 }
 		 else if(tbt[i]==0){
-		 	zc=zc+1;
+		 	zc=zc+1;  //zc is zero count; if all the elements in qres are 0, rrb done
 		 }
 		 else{
 		 	if(tbt[i]==tmq||tbt[i]<tmq){
@@ -135,7 +112,7 @@ for(i=0;i<n;i++){
 		 	
 		 }
 		  		if(sat[i]<=time){
-		  			time=time+1;
+		  			//time=time+1;
 		 if(j>s){
 		 }
 		 else if(sbt[j]==0){
@@ -158,7 +135,7 @@ for(i=0;i<n;i++){
 	 }
  	
  }
- 
-
-
+	
+	
+	
 }
