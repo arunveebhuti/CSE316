@@ -1,11 +1,43 @@
 #include<stdio.h>
 #include<conio.h>
+#include <stdlib.h>
+#include <unistd.h>  //Header file for sleep(). 
+#include <pthread.h>  
 
 
 int mr=0;
 char arr[840];
 int arrid[840];
 int endt[840];
+void *myThreadFun(void *vargp)  {
+	  
+      
+      system("CLS");
+      printf(" \n");
+	  printf(" \n");
+	  printf("\t\t\t\t ================================================= \n");
+	  printf("\t\t\t\t||                                               || \n");
+	  printf("\t\t\t\t||\t   ___      ____    ____   ______   \t ||\n");
+	  printf("\t\t\t\t||\t .'   `.   |_   \\  /   _|.' ____ \\   \t || \n");
+	  printf("\t\t\t\t||\t/  .-.  \\    |   \\/   |  | (___ \\_|   \t ||\n");
+	  printf("\t\t\t\t||\t| | \\ | |    | |\\  /| |   _.____`.    \t ||\n");
+	  printf("\t\t\t\t||\t\\  `-'  \\_  _| |_\\/_| |_ | \\____) |   \t ||\n");
+	  printf("\t\t\t\t||\t `.___.\\__||_____||_____| \\______.'   \t ||\n");
+	  printf("\t\t\t\t||                                               || \n");
+	  sleep(1); 
+	  printf(" \t\t\t\t||\t  ___(Query Management System)___\t ||\n");
+	  printf("\t\t\t\t ================================================= \n");
+	  sleep(1); 
+	  system("COLOR 17");
+	  sleep(1); 
+	  system("COLOR 47");
+	  sleep(1); 
+	  system("COLOR 60");
+	  printf("\n\n\n\n\n\n\n\n\t\t\t                   (Press any key to continue)\n");
+	  printf(" ---------------------------------------------------------------------------------------------------------------------");
+	  getch();
+	  return NULL;  
+	  }
 
 void prin(char cc,int id,int et){
 	arr[mr]=cc;
@@ -17,10 +49,14 @@ void prin(char cc,int id,int et){
 
 
  main(){
+ 	pthread_t thread_id; 
+ 	pthread_create(&thread_id, NULL, myThreadFun, NULL);      
+	pthread_join(thread_id, NULL);
 	int tq[840],tbt[840],tat[840];
 	int sq[840],sbt[840],sat[840];
 	int n,i,tempa=0,tempb=0,s=0,t=0,bt=0,a,b,g,j,zc=0,tmq=0,time=0,w,pi=0,gp,time1,ww,ii,www;
 	char ts;//teacher or student for ip
+	system("CLS");
 		printf("__________________Query Management System_________________\n\n");
 printf("Enter Number of Queries : ");
 scanf("%d",&n);
@@ -30,7 +66,7 @@ for(i=0;i<n;i++){
 	scanf(" %c", &ts);
 	printf("Enter Burst Time :");
 	scanf("%d",&tempb);	
-//	printf("%d",&tempb);
+
 	bt=bt+tempb;  //bt-burst time for 14hrs 
 	printf("Enter Arival Time :");
 	scanf("%d",&tempa);	
