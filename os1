@@ -54,7 +54,7 @@ void prin(char cc,int id,int et){
 	pthread_join(thread_id, NULL);
 	int tq[840],tbt[840],tat[840];
 	int sq[840],sbt[840],sat[840];
-	int n,i,tempa=0,tempb=0,s=0,t=0,bt=0,a,b,g,j,zc=0,tmq=0,time=0,w,pi=0,gp,time1,ww,ii,www;
+	int n,i,tempa=0,tempb=0,s=0,t=0,bt=0,a,b,g,j,zc=0,tmq=0,time=0,w,pi=0,gp,time1,ww,ii,www,timesp=0;
 	char ts;//teacher or student for ip
 	system("CLS");
 		printf("__________________Query Management System_________________\n\n");
@@ -89,6 +89,32 @@ for(i=0;i<n;i++){
 		
 	}
 	}
+	system("CLS");
+	
+	
+	
+	printf("\n");	
+	
+	printf("The List of Querries to de Exicuted are : \n");
+	
+	printf("\n\n\n\n\t\t\t\t|  Teacher or student   | Arrival Time |  Burst Time |\n");
+	printf("-----------------------------------------------------------------------------------------------------------------------\n");
+	for(www=0;www<s;www++){
+		printf("\t\t\t\t|\t  Student\t|      %d       |      %d      |\n",sat[www],sbt[www]);
+		
+	}
+		for(www=0;www<t;www++){
+		printf("\t\t\t\t|\t  Teacher\t|      %d       |      %d      |\n",tat[www],tbt[www]);
+		
+	}
+	printf("\t\t\t\t------------------------------------------------------\n\n\n");
+	
+	
+	
+	
+	
+	
+	
 		printf("Enter Time Quantum :");
 	scanf("%d",&tmq);	//time quantum
 	
@@ -140,12 +166,18 @@ for(i=0;i<n;i++){
             }
  
         }
-		system("CLS");
+	//	system("CLS");
 	i=0;
 	j=0;
 	g=t+s;
 //	printf("%d----",g);
-   if(sat[0]<=tat[0]){
+if(t==0){
+    time=sat[0];
+}
+else if(s==0){
+	time=tat[0];
+     }
+     else if(sat[0]<=tat[0]){
    	time=sat[0];
    }	
    else{
@@ -153,6 +185,8 @@ for(i=0;i<n;i++){
    time=tat[0];
              }
              time1=time;
+             
+            // printf("aaaaaaaaaaaaaaaa%d",time);
 while(zc!=g){ //loop runs t+s times 
 //printf("---%d----",zc);
 	zc=0;
@@ -167,16 +201,18 @@ while(zc!=g){ //loop runs t+s times
 		 	             	if(tbt[i]==0){}
 		 	             	else if(tbt[i]<=tmq){
 		 	             				 		time=time+tbt[i];
+		 	             				 		timesp=timesp+tbt[i];
 		 	                                 	tbt[i]=0;
 		 	                                 	prin('t',tq[i],time);
-		 	                                 	printf("%d",tq[i]);
+		 	                                 //	printf("%d",tq[i]);
 		 	                                 	
 		                                         }
 		                    if(tbt[i]>tmq){
 			 	                                tbt[i]=tbt[i]-tmq;
 			 	                                time=time+tmq;
+			 	                                timesp=timesp+tmq;
 			 	                                prin('t',tq[i],time);
-			 	                                printf("%d",tq[i]);
+			 	                             //   printf("%d",tq[i]);
 												//-----------------------------------------------------------------
 			                                }
 		
@@ -195,15 +231,17 @@ while(zc!=g){ //loop runs t+s times
 		 	             	if(sbt[j]==0){}
 		 	             	else if(sbt[j]<=tmq){
 		 	             				 		time=time+sbt[j];
+		 	             				 		timesp=timesp+sbt[j];
 		 	                                 	sbt[j]=0;
 		 	                                 	prin('s',sq[j],time);
-		 	                                 	printf("%d",sq[j]);
+		 	                                 //	printf("%d",sq[j]);
 		                                         }
 		                    if(sbt[j]>tmq){
 			 	                                sbt[j]=sbt[j]-tmq;
 			 	                                time=time+tmq;
+			 	                                timesp=timesp+tmq;
 			 	                                prin('s',sq[j],time);
-			 	                                printf("%d",sq[j]);
+			 	                               // printf("%d",sq[j]);
 												//-----------------------------------------------------------------
 			                                }
 		
@@ -239,18 +277,25 @@ for(w=0;w<s;w++){
 				
 		
 		}
+		
+		
+		
+
+	
+		
+		
 		printf("\n");
 		printf(" ");
 		ww=endt[0]-time1;
 				for(ii=0;ii<ww;ii++){
 				printf("--");
 			}
-for (w=1;w<=n;w++){
+for (w=1;w<mr;w++){
 	if(arrid[w]==0){
 		printf("--");
 	}
 	else{
-			printf(" ");
+			printf("-");
 			ww=endt[w]-endt[w-1];
 			for(ii=0;ii<ww;ii++){
 				printf("--");
@@ -272,13 +317,13 @@ for (w=1;w<=n;w++){
 				for(ii=1;ii<ww;ii++){
 				printf(" ");
 			}
-			printf("|");
-for (w=1;w<=n;w++){
+		//	printf("|");
+for (w=1;w<mr;w++){
 	if(arrid[w]==0){
-		printf("  ");
+		printf("||");
 	}
 	else{
-			
+			printf("|");
 			ww=endt[w]-endt[w-1];
 			for(ii=1;ii<ww;ii++){
 				printf(" ");
@@ -288,31 +333,38 @@ for (w=1;w<=n;w++){
 				for(ii=1;ii<ww;ii++){
 				printf(" ");
 			}
-			printf("|");
+			
 			
 		}
 	
 }
+printf("|");
 printf("\n");
 printf("%d",time1);
 ww=endt[0]-time1;
 				for(ii=0;ii<ww;ii++){
 				printf("--");
 			}
-
-for (w=0;w<=n;w++){
+printf("%d",endt[0]);
+for (w=1;w<mr;w++){
 	if(arrid[w]==0){
 		printf("--");
+		printf("%d",endt[w]);
 	}
 	else{
-			printf("%d",endt[w]);
-			ww=endt[w+1]-endt[w];
+			
+			ww=endt[w]-endt[w-1];
 			for(ii=0;ii<ww;ii++){
 				printf("--");
 			}
+			printf("%d",endt[w]);
 			
 		}
+
 		
-}	
+	}	
+		printf("\n\n\nThe total time Sudhans Spent on the System is : %d min ",timesp);
+	
+		printf("\n-----------------------------------------------------------------------------------------------------------------------\n");
 		
 		}
